@@ -1,0 +1,36 @@
+*{
+    margin : 0px;
+    padding: 0px; 
+    box-sizing: border-box;
+   
+}
+
+.navbar{
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #202630;
+    color: white;
+    position:fixed;
+    z-index: 10000;
+    align-items: center;
+    top: 0;
+    width: 100%;
+}
+
+.navlink{
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+
+}
+
+.navlink a{
+    color: white;
+    text-decoration: none;
+}
+
+.navlink a:hover{
+    color: #3b82f6;
+}

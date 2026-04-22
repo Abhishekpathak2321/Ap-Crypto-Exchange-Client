@@ -1,0 +1,25 @@
+.card{
+   width: 200px;
+   height: auto;
+   padding: 10px;
+   margin-top: 20px;
+   margin-right: 50px;
+   border: 2px solid red;
+   display:flex;
+   flex-direction: column;
+   background-color:#fcd535 ;
+
+
+
+
+}
+
+.name{
+    color: black;
+    background-color: none;
+}
+.image{
+   width: 100%;
+   height: auto;
+   border-radius: 10px;
+}
