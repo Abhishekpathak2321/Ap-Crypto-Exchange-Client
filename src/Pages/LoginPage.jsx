@@ -13,7 +13,7 @@ const LoginPage = () => {
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
-    const Url = ("http://localhost:3005/api/auth/login")
+    const API_Url = import.meta.env.VITE_API_URL;
 
 
     //handle Submit Button
@@ -23,7 +23,7 @@ const LoginPage = () => {
 
         try {
             setLoading(true)
-            const res = await axios.post(Url, {
+            const res = await axios.post(`${API_Url}/api/auth/login`, {
                 email: email,
                 password: password
             })

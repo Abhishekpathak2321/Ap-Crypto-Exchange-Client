@@ -7,7 +7,7 @@ import styles from "../stylesheets/registerUser.module.css"
 const RegisterUser = () => {
 
     //Api for creating users
-    const Url = ("http://localhost:3005/api/auth/register")
+    const API_Url = import.meta.env.VITE_API_URL
     const navigate = useNavigate()
 
     const [name, setName] = useState("")
@@ -26,7 +26,7 @@ const RegisterUser = () => {
 
         try {
             setLoading(true)
-            const res = await axios.post(Url, {
+            const res = await axios.post(`${API_Url}/api/auth/register`, {
                 name: name,
                 email: email,
                 password: password,
