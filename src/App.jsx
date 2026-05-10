@@ -9,39 +9,33 @@ import Homepage from './Pages/Homepage';
 import ChartPage from './Pages/ChartPage';
 import Footer from './Component/Footer';
 import ProtectedRoute from './Component/ProtectRoute';
+import Setting from './Pages/Setting';
 
 const App = () => {
   return (
-    <div>
-   
-     <BrowserRouter>
-     <Footer/>
-     <Navigation/>
-     <Routes>
-      <Route path='/' element = {<Homepage/>}/>
-      <Route path ="/register" element = { <RegisterUser/>}/>
-      <Route path ="/login" element = {<LoginPage/>} />
-       
-      <Route path ="/dashboard"
-      element ={
-        <ProtectedRoute>
-      <DashboardPage/>
-      </ProtectedRoute>
-      }/>
-     
-
-      
-      <Route path ="/chart" element ={
-        <ProtectedRoute>
-        <ChartPage/>
-        </ProtectedRoute>
-        }/>
-     
-     </Routes>
-    
-     </BrowserRouter>
-     
-      
+    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+      <BrowserRouter>
+        <Navigation />
+        <div style={{ flex: 1 }}>
+          <Routes>
+            <Route path='/' element={<Homepage />} />
+            <Route path="/register" element={<RegisterUser />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/dashboard" element={
+              <ProtectedRoute>
+                <DashboardPage />
+              </ProtectedRoute>
+            } />
+            <Route path="/chart" element={
+              <ProtectedRoute>
+                <ChartPage />
+              </ProtectedRoute>
+            } />
+            <Route path="/setting" element={<Setting />} />
+          </Routes>
+        </div>
+        <Footer />
+      </BrowserRouter>
     </div>
   )
 }

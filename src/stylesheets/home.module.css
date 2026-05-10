@@ -1,79 +1,646 @@
-*{
+* {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
 }
 
-.logo{
-  width: 600px;
+/* ── Logo ────────────────────────────── */
+.logo {
+  width: 580px;
+  max-width: 90vw;
   margin-bottom: 0px;
 }
 
-.hero{
-  margin-top: 30px;
-  min-height:100vh;
+.globeContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ── Hero ────────────────────────────── */
+.hero {
+  padding-top: 116px;
+  min-height: 100vh;
   display: flex;
   text-align: center;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
+  gap: 14px;
 }
 
-.hero h1{
+.hero h1 {
   color: white;
-  font-size: 6like 0px;
-  margin-top: 40px;
+  font-size: 58px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  line-height: 1.15;
+  margin-top: 20px;
 }
-.hero h2{
+
+.hero h2 {
   margin-top: 0px;
-  margin-bottom: 20px;
+  margin-bottom: 8px;
+  font-size: 26px;
 }
 
-
-
-.heading{
+.heading {
   color: azure;
-  gap: 20px
-
 }
 
-.content p{
-  color:#FFD700  ;
-  gap: 20px;
+.content p {
+  color: #FFD700;
+  font-size: 17px;
+  line-height: 1.75;
 }
 
-.btn{
-  margin-top: 30px;
-  padding: 20px;
-  width: 300px;
+.btn {
+  margin-top: 28px;
+  padding: 16px 44px;
+  width: 280px;
   border-radius: 12px;
-  background-color: #ffe208 ;
+  background-color: #ffe208;
   margin-bottom: 10px;
-  
-
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.btn:hover{
+.btn:hover {
   background-color: #e6c200;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(230, 194, 0, 0.35);
   cursor: pointer;
 }
 
-.section1{
-  color: antiquewhite;
-  margin-top: 0px;
-  margin-bottom: 20px;
-  margin-left: 20px;
-  margin-right: 20px;
-text-align: justify;
-  line-height: 1.7;
- 
- 
+/* ── Stats bar ───────────────────────── */
+.statsBar {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.03);
+  padding: 24px 40px;
+  gap: 0;
 }
 
-.section1 h2,h4{
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 14px 52px;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.statItem:last-child {
+  border-right: none;
+}
+
+.statValue {
+  color: #FFD700;
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  background: transparent;
+}
+
+.statLabel {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.9px;
+  background: transparent;
+}
+
+/* ── Features section ────────────────── */
+.section1 {
+  padding: 72px 40px 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: justify;
+  line-height: 1.7;
+}
+
+.sectionTitle {
+  color: #e6c200;
+  font-size: 32px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 52px;
+  background: transparent;
+}
+
+/* Feature card grid */
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.featureCard {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 36px 32px;
+  text-align: left;
+  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.featureCard:hover {
+  border-color: rgba(230, 194, 0, 0.35);
+  transform: translateY(-5px);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.35);
+}
+
+.featureIcon {
+  font-size: 34px;
+  display: block;
+  margin-bottom: 18px;
+  background: transparent;
+}
+
+.featureCard h4 {
+  color: #e6c200;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  border: none;
+  background: transparent;
+}
+
+.featureCard p {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 15px;
+  line-height: 1.78;
+  background: transparent;
+}
+
+/* ── Ticker banner ───────────────────── */
+.ticker {
+  position: fixed;
+  top: 70px;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  overflow: hidden;
+  background: #161d27;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  padding: 8px 0;
+}
+
+.tickerTrack {
+  display: flex;
+  gap: 0;
+  animation: scrollTicker 40s linear infinite;
+  white-space: nowrap;
+  background: transparent;
+}
+
+.tickerItem {
+  padding: 0 40px;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.75);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  background: transparent;
+}
+
+.tickerItem:nth-child(odd) {
+  color: #FFD700;
+}
+
+@keyframes scrollTicker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ── Page wrapper ────────────────────── */
+.page {
+  overflow-x: hidden;
+}
+
+/* ── How it works ────────────────────── */
+.howSection {
+  padding: 72px 40px 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.step {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 36px 28px;
+  position: relative;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.step:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 215, 0, 0.3);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.35);
+}
+
+.stepNum {
+  display: block;
+  font-size: 42px;
+  font-weight: 900;
+  color: rgba(255, 215, 0, 0.15);
+  line-height: 1;
+  margin-bottom: 16px;
+  background: transparent;
+}
+
+.stepTitle {
+  color: #FFD700;
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  background: transparent;
+  border: none;
+}
+
+.stepDesc {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 14px;
+  line-height: 1.75;
+  background: transparent;
+}
+
+/* ── Popular coins ───────────────────── */
+.coinsSection {
+  padding: 0 40px 72px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.coinsGrid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+}
+
+.coinBadge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 24px 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: default;
+}
+
+.coinBadge:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.3);
+}
+
+.coinSym {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+  background: transparent;
+}
+
+.coinName {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.45);
+  background: transparent;
+}
+
+/* ── CTA section ─────────────────────── */
+.cta {
+  text-align: center;
+  padding: 88px 40px;
+  background: rgba(255, 215, 0, 0.04);
+  border-top: 1px solid rgba(255, 215, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+}
+
+.ctaTitle {
+  color: white;
+  font-size: 38px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 14px;
+  background: transparent;
+}
+
+.ctaDesc {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 17px;
+  margin-bottom: 36px;
+  background: transparent;
+}
+
+.ctaBtns {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  background: transparent;
+}
+
+.btnOutline {
+  padding: 16px 44px;
+  width: 220px;
+  border-radius: 12px;
+  background: transparent;
+  border: 2px solid rgba(255, 215, 0, 0.5);
+  color: #FFD700;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.btnOutline:hover {
+  background: rgba(255, 215, 0, 0.08);
+  border-color: #FFD700;
+}
+
+/* keep old selectors working if referenced */
+.section1 h2,
+.section1 h4 {
   color: #e6c200;
   margin-bottom: 10px;
   border: 2px solid grey;
-  
+}
+
+/* ── Responsive ──────────────────────── */
+
+/* Tablet */
+@media (max-width: 992px) {
+  .logo {
+    width: 420px;
+  }
+
+  .hero {
+    padding: 116px 20px 20px;
+    gap: 10px;
+  }
+
+  .hero h1 {
+    font-size: 46px;
+    margin-top: 20px;
+  }
+
+  .hero h2 {
+    font-size: 26px;
+  }
+
+  .content p {
+    font-size: 17px;
+    line-height: 1.6;
+  }
+
+  .btn {
+    width: 240px;
+    padding: 16px;
+    font-size: 16px;
+  }
+
+  .statItem {
+    padding: 12px 28px;
+  }
+
+  .statValue {
+    font-size: 24px;
+  }
+
+  .section1 {
+    padding: 52px 24px 60px;
+    font-size: 17px;
+    line-height: 1.8;
+  }
+
+  .sectionTitle {
+    font-size: 26px;
+    margin-bottom: 36px;
+  }
+
+  .section1 h2,
+  .section1 h4 {
+    font-size: 22px;
+  }
+
+  .howSection {
+    padding: 52px 24px 60px;
+  }
+
+  .steps {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .coinsSection {
+    padding: 0 24px 52px;
+  }
+
+  .coinsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .ctaTitle {
+    font-size: 30px;
+  }
+
+  .ctaDesc {
+    font-size: 15px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .logo {
+    width: 280px;
+  }
+
+  .hero {
+    padding-top: 100px;
+    padding-left: 15px;
+    padding-right: 15px;
+    min-height: auto;
+    gap: 8px;
+  }
+
+  .hero h1 {
+    font-size: 36px;
+    margin-top: 16px;
+  }
+
+  .hero h2 {
+    font-size: 21px;
+    margin-bottom: 10px;
+  }
+
+  .content p {
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .btn {
+    width: 220px;
+    padding: 15px;
+    font-size: 15px;
+  }
+
+  .statsBar {
+    padding: 16px 20px;
+    gap: 0;
+  }
+
+  .statItem {
+    padding: 10px 20px;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    width: 50%;
+  }
+
+  .statItem:last-child {
+    border-bottom: none;
+  }
+
+  .statValue {
+    font-size: 22px;
+  }
+
+  .cardGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .section1 {
+    padding: 40px 16px 48px;
+    margin-left: 0;
+    margin-right: 0;
+    font-size: 15px;
+    line-height: 1.8;
+  }
+
+  .sectionTitle {
+    font-size: 22px;
+    margin-bottom: 28px;
+  }
+
+  .section1 h2,
+  .section1 h4 {
+    font-size: 20px;
+    padding: 10px;
+  }
+
+  .howSection {
+    padding: 40px 16px 48px;
+  }
+
+  .steps {
+    grid-template-columns: 1fr;
+  }
+
+  .coinsSection {
+    padding: 0 16px 40px;
+  }
+
+  .coinsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .cta {
+    padding: 56px 20px;
+  }
+
+  .ctaTitle {
+    font-size: 26px;
+  }
+
+  .btnOutline {
+    width: 100%;
+    max-width: 260px;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .logo {
+    width: 210px;
+  }
+
+  .hero {
+    margin-top: 0;
+    padding: 90px 12px 16px;
+  }
+
+  .hero h1 {
+    font-size: 28px;
+    margin-top: 12px;
+  }
+
+  .hero h2 {
+    font-size: 17px;
+  }
+
+  .content p {
+    font-size: 14px;
+  }
+
+  .btn {
+    width: 100%;
+    max-width: 260px;
+    padding: 14px;
+    font-size: 15px;
+  }
+
+  .statItem {
+    width: 100%;
+    border-right: none;
+  }
+
+  .featureCard {
+    padding: 24px 20px;
+  }
+
+  .featureIcon {
+    font-size: 28px;
+  }
+
+  .featureCard h4 {
+    font-size: 16px;
+  }
+
+  .section1 h2,
+  .section1 h4 {
+    font-size: 17px;
+  }
+
+  .coinsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .steps {
+    grid-template-columns: 1fr;
+  }
+
+  .ctaTitle {
+    font-size: 22px;
+  }
+
+  .tickerItem {
+    padding: 0 24px;
+    font-size: 12px;
+  }
 }

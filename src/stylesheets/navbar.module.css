@@ -1,36 +1,155 @@
-*{
-    margin : 0px;
-    padding: 0px; 
-    box-sizing: border-box;
-   
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.navbar{
-    height: 70px;
+/* ── Base navbar ─────────────────────── */
+.navbar {
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 28px;
+  background-color: #202630;
+  color: white;
+  position: fixed;
+  z-index: 10000;
+  top: 0;
+  width: 100%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+}
+
+.brand {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  white-space: nowrap;
+  color: #FFD700;
+  background: transparent;
+}
+
+/* ── Desktop nav links ───────────────── */
+.navlink {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.navlink a {
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 7px 13px;
+  border-radius: 8px;
+  transition: color 0.2s ease, background 0.2s ease;
+  white-space: nowrap;
+  background: transparent;
+}
+
+.navlink a:hover {
+  color: #FFD700;
+  background: rgba(255, 215, 0, 0.08);
+}
+
+.active {
+  color: #FFD700 !important;
+  background: rgba(255, 215, 0, 0.1) !important;
+}
+
+/* ── Hamburger button — hidden on desktop ── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 38px;
+  height: 38px;
+  padding: 6px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.hamburger:hover {
+  border-color: rgba(255, 215, 0, 0.5);
+}
+
+.bar {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  background-color: white;
+}
+
+/* X animation when open */
+.hamburgerOpen .bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.hamburgerOpen .bar:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.hamburgerOpen .bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ── Mobile breakpoint ───────────────── */
+@media (max-width: 768px) {
+
+  /* Show hamburger, hide desktop links */
+  .hamburger {
     display: flex;
-    justify-content: space-between;
-    padding: 20px;
+  }
+
+  /* Dropdown panel — hidden by default */
+  .navlink {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
     background-color: #202630;
-    color: white;
-    position:fixed;
-    z-index: 10000;
-    align-items: center;
-    top: 0;
-    width: 100%;
-}
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+  }
 
-.navlink{
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
+  /* Open state */
+  .navOpen {
+    max-height: 420px;
+  }
 
-}
+  .navlink a {
+    padding: 15px 24px;
+    border-radius: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 15px;
+  }
 
-.navlink a{
-    color: white;
-    text-decoration: none;
-}
+  .navlink a:last-child {
+    border-bottom: none;
+  }
 
-.navlink a:hover{
-    color: #3b82f6;
+  .navlink a:hover {
+    background: rgba(255, 215, 0, 0.07);
+    padding-left: 32px;
+  }
+
+  .active {
+    background: rgba(255, 215, 0, 0.08) !important;
+    border-left: 3px solid #FFD700;
+    padding-left: 21px !important;
+  }
 }

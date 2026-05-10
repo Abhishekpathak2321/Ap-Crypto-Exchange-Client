@@ -14,7 +14,7 @@ const LoginPage = () => {
     const navigate = useNavigate();
 
     const API_Url = import.meta.env.VITE_API_URL;
-
+    console.log(API_Url)
 
     //handle Submit Button
     const handleSubmit = async (event) => {
@@ -29,7 +29,7 @@ const LoginPage = () => {
             })
             localStorage.setItem("token", res.data.token);
             navigate("/dashboard")
-
+          toast.success("Registration Successfully")
 
         } catch (error) {
             toast.error (error.response?.data?.message, "Invalid Email or Password");

@@ -1,14 +1,147 @@
-*{
-    margin:0px;
-    padding: 0px;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-html,body{
-   height: 100%;
-   margin: 0;
+.footer {
+  background-color: #161d27;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  padding: 52px 40px 28px;
+  margin-top: 0;
 }
 
+/* ── Content grid ────────────────────── */
+.footerContent {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.4fr;
+  gap: 48px;
+  max-width: 1200px;
+  margin: 0 auto 36px;
+}
 
+/* Brand column */
+.brand {
+  background: transparent;
+}
 
+.brandName {
+  color: #FFD700;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  background: transparent;
+}
 
+.brandDesc {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 14px;
+  line-height: 1.75;
+  max-width: 280px;
+  background: transparent;
+}
+
+/* Nav columns */
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: transparent;
+}
+
+.colTitle {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.9px;
+  margin-bottom: 6px;
+  background: transparent;
+}
+
+.colLink {
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s ease;
+  background: transparent;
+}
+
+.colLink:hover {
+  color: #FFD700;
+}
+
+.colText {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 14px;
+  background: transparent;
+}
+
+/* ── Bottom bar ──────────────────────── */
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  padding-top: 22px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: transparent;
+}
+
+.copy {
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 13px;
+  background: transparent;
+}
+
+.disclaimer {
+  color: rgba(255, 255, 255, 0.28);
+  font-size: 12px;
+  background: transparent;
+}
+
+/* ── Responsive ──────────────────────── */
+@media (max-width: 1024px) {
+  .footerContent {
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+  }
+
+  .brand {
+    grid-column: 1 / -1;
+  }
+
+  .brandDesc {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .footer {
+    padding: 40px 24px 24px;
+  }
+
+  .footerContent {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+
+  .brand {
+    grid-column: 1 / -1;
+  }
+
+  .bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+}
+
+@media (max-width: 400px) {
+  .footerContent {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,107 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+/* ── Page wrapper ────────────────────── */
+.settingContainer {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 96px 24px 60px;
+}
+
+/* ── Settings card ───────────────────── */
+.settingBox {
+  width: 100%;
+  max-width: 680px;
+}
+
+.settingBox h2 {
+  color: white;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 28px;
+  letter-spacing: -0.3px;
+}
+
+/* ── Nav links list ──────────────────── */
+.settingContainer .links {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.settingContainer .links a {
+  display: block;
+  padding: 18px 28px;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  transition: background 0.2s ease, color 0.2s ease, padding-left 0.2s ease;
+  background: transparent;
+}
+
+.settingContainer .links a:last-child {
+  border-bottom: none;
+}
+
+.settingContainer .links a:hover {
+  background: rgba(255, 215, 0, 0.06);
+  color: #FFD700;
+  padding-left: 36px;
+}
+
+.settingContainer hr {
+  display: none;
+}
+
+/* ── Logout button ───────────────────── */
+.logoutBtn {
+  display: block;
+  width: 100%;
+  padding: 18px 28px;
+  text-align: left;
+  color: #ef4444;
+  font-size: 15px;
+  font-weight: 500;
+  background: transparent;
+  border: none;
+  border-bottom: none;
+  cursor: pointer;
+  transition: background 0.2s ease, padding-left 0.2s ease;
+}
+
+.logoutBtn:hover {
+  background: rgba(239, 68, 68, 0.08);
+  padding-left: 36px;
+}
+
+/* ── Responsive ──────────────────────── */
+@media (max-width: 640px) {
+  .settingContainer {
+    padding: 90px 16px 40px;
+  }
+
+  .settingBox h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+
+  .settingContainer .links a {
+    padding: 16px 20px;
+    font-size: 14px;
+  }
+
+  .settingContainer .links a:hover {
+    padding-left: 28px;
+  }
+}

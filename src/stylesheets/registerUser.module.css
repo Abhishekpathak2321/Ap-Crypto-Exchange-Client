@@ -1,44 +1,63 @@
-.container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin-top: 0px;
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin-top: 0px;
 }
 
-.formBox{
-   width: 500px;
-   display: flex;
-   align-items: center;
-   flex-direction: column;
-   gap: 20px;
+.formBox {
+  width: 500px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.formBox h2{
-    color: white;
-   
+.formBox h2 {
+  color: white;
 }
 
-.formBox input{
-    padding: 20px;
-    width: 400px;
-    border-radius: 8px ;  
-    color: white;
-    font-size: 16px;
+.formBox input {
+  padding: 20px;
+  width: 400px;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
 }
 
-.btn{
-    padding:20px;
+.btn {
+  padding: 20px;
+  width: 100%;
+  background: #FFD700;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.btn:hover {
+  background: #e6c200;
+}
+
+.navi {
+  color: white;
+}
+
+.link {
+  color: #3B82F6;
+}
+
+/* ── Responsive: prevent overflow on small screens ── */
+@media (max-width: 520px) {
+  .formBox {
     width: 100%;
-    background:#FFD700 ;
-    border-radius: 6px;
-    
-}
+    padding: 0 20px;
+  }
 
-.navi{
-    color: white;
-}
-
-.link{
-    color: #3B82F6;
+  .formBox input {
+    width: 100%;
+  }
 }
