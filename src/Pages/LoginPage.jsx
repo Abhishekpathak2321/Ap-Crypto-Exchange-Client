@@ -68,6 +68,10 @@ const LoginPage = () => {
                 </form>
 
 
+                <p className={styles.navi} style={{ marginTop: 12 }}>
+                    <Link className={styles.link} to="/forgot-password">Forgot Password?</Link>
+                </p>
+
                 <p style={{ color: 'white' }}>{error}</p>
                 <p className={styles.navi}>Don't have an account? <Link className={styles.link} to="/register">Register</Link></p>
 
