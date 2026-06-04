@@ -3,6 +3,10 @@ import { createRoot } from 'react-dom/client'
 import {ToastContainer} from 'react-toastify'
 import "../src/stylesheets/index.css"
 import App from './App.jsx'
+import printConsoleBanner from './utils/consoleBanner.js'
+
+// Colourful AP Exchange greeting in the browser console.
+printConsoleBanner()
 
 createRoot(document.getElementById("root")).render(
 

@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import styles from "../stylesheets/auth.module.css"
+import styles from "../stylesheets/registerUser.module.css"
 import axios from 'axios';
+
 
 const LoginPage = () => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
@@ -28,58 +30,48 @@ const LoginPage = () => {
             toast.success("Logged in successfully")
 
         } catch (error) {
-            toast.error(error.response?.data?.message || "Invalid email or password");
+            toast.error(error.response?.data?.message || "Invalid Email or Password");
         }
         finally {
             setLoading(false)
         }
     }
 
+    if (loading)
+        return <h4>loading....</h4>
+
+
     return (
-        <div className={styles.page}>
-            <div className={styles.card}>
-                <div className={styles.badge}>👋</div>
-                <h2 className={styles.title}>Welcome Back</h2>
-                <p className={styles.subtitle}>
-                    Sign in to your account to continue trading.
-                </p>
 
-                <form onSubmit={handleSubmit} className={styles.form}>
-                    <label className={styles.label} htmlFor="email">Email address</label>
-                    <input
-                        id="email"
-                        type="email"
-                        className={styles.input}
+        <div className={styles.container}>
+            <div className={styles.formBox}>
+                <h2>Login</h2>
+                <form onSubmit={handleSubmit} className='box'>
+
+                    <input type="email"
                         value={email}
-                        placeholder='you@example.com'
+                        placeholder='Enter your Email'
                         onChange={(event) => setEmail(event.target.value)}
-                        required
-                    />
-
-                    <label className={styles.label} htmlFor="password">Password</label>
-                    <input
-                        id="password"
-                        type="password"
-                        className={styles.input}
+                        required />
+                    <br /> <br />
+                    <input type="password"
                         value={password}
-                        placeholder='Enter your password'
+                        placeholder='Enter your Password'
                         onChange={(event) => setPassword(event.target.value)}
-                        required
-                    />
-
-                    <div className={styles.forgotLink}>
-                        <Link className={styles.link} to="/forgot-password">Forgot Password?</Link>
-                    </div>
-
-                    <button className={styles.button} type='submit' disabled={loading}>
-                        {loading ? "Signing in..." : "Login"}
-                    </button>
+                        required />
+                    <br /> <br />
+                    <button className={styles.btn} type='submit'>Login</button>
                 </form>
 
-                <div className={styles.footerRow}>
-                    Don't have an account? <Link className={styles.link} to="/register">Register</Link>
-                </div>
+                <p className={styles.navi} style={{ marginTop: 12 }}>
+                    <Link className={styles.link} to="/forgot-password">Forgot Password?</Link>
+                </p>
+
+                <p style={{ color: 'white' }}>{error}</p>
+                <p className={styles.navi}>Don't have an account? <Link className={styles.link} to="/register">Register</Link></p>
+
             </div>
+
         </div>
     )
 }
