@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { NavLink, useNavigate, useLocation } from 'react-router-dom'
+import { toast } from 'react-toastify'
 import styles from "../stylesheets/navbar.module.css"
 
 
@@ -7,6 +8,28 @@ const Navigation = () => {
 
   // This controls whether the mobile menu is open or closed
   const [menuOpen, setMenuOpen] = useState(false)
+
+  // Tracks whether a user is logged in (true when a token exists in storage)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  // Re-check the login status whenever the page (route) changes,
+  // and also when another tab logs in or out (storage event).
+  useEffect(() => {
+    const checkLogin = () => {
+      const token = localStorage.getItem("token")
+      setIsLoggedIn(!!token)
+    }
+
+    checkLogin()
+    window.addEventListener("storage", checkLogin)
+
+    return () => {
+      window.removeEventListener("storage", checkLogin)
+    }
+  }, [location])
 
   // Toggle the menu open / closed when hamburger is clicked
   const toggleMenu = () => {
@@ -16,6 +39,15 @@ const Navigation = () => {
   // Close the menu when a link is clicked (so it doesnt stay open)
   const closeMenu = () => {
     setMenuOpen(false)
+  }
+
+  // Log the user out: remove the token, update the navbar, go to login
+  const handleLogout = () => {
+    localStorage.removeItem("token")
+    setIsLoggedIn(false)
+    closeMenu()
+    toast.success("Logged out successfully")
+    navigate("/login")
   }
 
   // This function highlights the active link with a gold color
@@ -51,11 +83,22 @@ const Navigation = () => {
       <div className={`${styles.navlink} ${menuOpen ? styles.navOpen : ''}`}>
 
         <NavLink to="/"          onClick={closeMenu} className={getActiveClass}>Home</NavLink>
-        <NavLink to="/register"  onClick={closeMenu} className={getActiveClass}>Register</NavLink>
-        <NavLink to="/login"     onClick={closeMenu} className={getActiveClass}>Login</NavLink>
+
+        {/* Register and Login are only shown when the user is logged OUT */}
+        {!isLoggedIn && (
+          <>
+            <NavLink to="/register" onClick={closeMenu} className={getActiveClass}>Register</NavLink>
+            <NavLink to="/login"    onClick={closeMenu} className={getActiveClass}>Login</NavLink>
+          </>
+        )}
+
         <NavLink to="/dashboard" onClick={closeMenu} className={getActiveClass}>Dashboard</NavLink>
         <NavLink to="/chart"     onClick={closeMenu} className={getActiveClass}>Chart</NavLink>
-        <NavLink to="/setting"   onClick={closeMenu} className={getActiveClass}>Settings</NavLink>
+
+        {/* Logout is only shown when the user is logged IN */}
+        {isLoggedIn && (
+          <button className={styles.logoutBtn} onClick={handleLogout}>Logout</button>
+        )}
 
       </div>
 

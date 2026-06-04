@@ -39,12 +39,6 @@ p {
   padding: 20px;
 }
 
-/* ── TradingView chart — push below fixed navbar ── */
-#tradingview_chart {
-  margin-top: 70px;
-  min-height: calc(100vh - 70px);
-}
-
 /* ── Global responsive ───────────────── */
 @media (max-width: 768px) {
   .container {

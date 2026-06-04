@@ -9,7 +9,6 @@ import Homepage from './Pages/Homepage';
 import ChartPage from './Pages/ChartPage';
 import Footer from './Component/Footer';
 import ProtectedRoute from './Component/ProtectRoute';
-import Setting from './Pages/Setting';
 
 const App = () => {
   return (
@@ -31,7 +30,6 @@ const App = () => {
                 <ChartPage />
               </ProtectedRoute>
             } />
-            <Route path="/setting" element={<Setting />} />
           </Routes>
         </div>
         <Footer />

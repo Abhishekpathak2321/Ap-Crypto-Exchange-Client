@@ -59,6 +59,26 @@
   background: rgba(255, 215, 0, 0.1) !important;
 }
 
+/* ── Logout button — styled to match the nav links ── */
+.logoutBtn {
+  margin-left: 6px;
+  color: #FFD700;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 7px 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  background: rgba(255, 215, 0, 0.06);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.logoutBtn:hover {
+  background: rgba(255, 215, 0, 0.14);
+  border-color: #FFD700;
+}
+
 /* ── Hamburger button — hidden on desktop ── */
 .hamburger {
   display: none;
@@ -151,5 +171,23 @@
     background: rgba(255, 215, 0, 0.08) !important;
     border-left: 3px solid #FFD700;
     padding-left: 21px !important;
+  }
+
+  /* Full-width logout row in the mobile dropdown */
+  .logoutBtn {
+    margin: 0;
+    width: 100%;
+    text-align: left;
+    padding: 15px 24px;
+    border-radius: 0;
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    background: transparent;
+    font-size: 15px;
+  }
+
+  .logoutBtn:hover {
+    background: rgba(255, 215, 0, 0.07);
+    border-color: transparent;
   }
 }

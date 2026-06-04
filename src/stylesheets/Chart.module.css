@@ -1,12 +1,243 @@
-*{
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.chartContainer{
-    height: 100vh;
-    width: 100vw;
-    
+/* ── Page wrapper ─────────────────────────────
+   The navbar is fixed at 70px tall, so we pad the
+   top by that much. The page then flows normally:
+   toolbar → chart → extra market data below.
+   ───────────────────────────────────────────── */
+.page {
+  padding-top: 70px;
+  min-height: 100vh;
+  background: #202630;
+}
 
+/* ── Toolbar ──────────────────────────────────
+   Title on the left, coin switcher on the right.
+   Wraps to two rows on narrow screens.
+   ───────────────────────────────────────────── */
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 22px 32px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.title {
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.4px;
+}
+
+.subtitle {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+/* ── Coin quick-switch buttons ── */
+.coinSwitch {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.coinBtn {
+  padding: 9px 18px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.coinBtn:hover {
+  border-color: rgba(255, 215, 0, 0.4);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* The currently selected coin is highlighted in gold */
+.coinBtnActive {
+  background: #ffe208;
+  border-color: #ffe208;
+  color: #202630;
+}
+
+.coinBtnActive:hover {
+  background: #e6c200;
+  border-color: #e6c200;
+  color: #202630;
+}
+
+/* ── Live stats bar (real-time WebSocket) ────── */
+.liveBar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px 40px;
+  padding: 14px 32px;
+  background: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  min-height: 62px;
+}
+
+.liveItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.liveLabel {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+}
+
+/* Pulsing green dot next to the live price */
+.liveDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #2ecc71;
+  box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.6);
+  animation: livePulse 1.6s ease-out infinite;
+}
+
+@keyframes livePulse {
+  0%   { box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.5); }
+  100% { box-shadow: 0 0 0 8px rgba(46, 204, 113, 0); }
+}
+
+.livePrice {
+  font-size: 20px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.3px;
+  transition: color 0.2s ease;
+}
+
+.liveValue {
+  font-size: 15px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.liveConnecting {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+}
+
+/* Green up / red down — used for price flashes and 24h change */
+.up {
+  color: #2ecc71;
+}
+
+.down {
+  color: #ff6b6b;
+}
+
+/* ── Main chart area ──────────────────────────
+   A fixed, viewport-based height gives the
+   TradingView widget (autosize) a definite box
+   to fill — the screen minus navbar, toolbar
+   and the live stats bar.
+   ───────────────────────────────────────────── */
+.chart {
+  width: 100%;
+  height: calc(100vh - 70px - 92px - 62px);
+  min-height: 420px;
+}
+
+/* ── Extra market data section ────────────────
+   Sits below the chart with TradingView's symbol
+   info and technical-analysis widgets.
+   ───────────────────────────────────────────── */
+.details {
+  padding: 40px 32px 56px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.detailsTitle {
+  color: #e6c200;
+  font-size: 22px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.detailsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.detailsCard {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 16px;
+  overflow: hidden;
+}
+
+/* ── Responsive ──────────────────────────────── */
+@media (max-width: 900px) {
+  .detailsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .toolbar {
+    padding: 18px 20px;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .coinSwitch {
+    width: 100%;
+  }
+
+  .coinBtn {
+    flex: 1;
+    min-width: 56px;
+    padding: 9px 12px;
+    text-align: center;
+  }
+
+  .liveBar {
+    padding: 12px 16px;
+    gap: 10px 24px;
+  }
+
+  .chart {
+    height: 64vh;
+    min-height: 380px;
+  }
+
+  .details {
+    padding: 32px 16px 44px;
+  }
 }
