@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import styles from "../stylesheets/registerUser.module.css"
+import styles from "../stylesheets/auth.module.css"
 import axios from 'axios'
 
 const ResetPassword = () => {
@@ -37,30 +37,45 @@ const ResetPassword = () => {
     }
 
     return (
-        <div className={styles.container}>
-            <div className={styles.formBox}>
-                <h2>Reset Password</h2>
-                <form onSubmit={handleSubmit}>
-                    <input type="password"
+        <div className={styles.page}>
+            <div className={styles.card}>
+                <div className={styles.badge}>🔒</div>
+                <h2 className={styles.title}>Reset Password</h2>
+                <p className={styles.subtitle}>
+                    Choose a new password for your account. Make it at least 6 characters.
+                </p>
+
+                <form onSubmit={handleSubmit} className={styles.form}>
+                    <label className={styles.label} htmlFor="new-password">New password</label>
+                    <input
+                        id="new-password"
+                        type="password"
+                        className={styles.input}
                         value={password}
-                        placeholder='New Password'
+                        placeholder='Enter new password'
                         onChange={(event) => setPassword(event.target.value)}
-                        required />
-                    <br /> <br />
-                    <input type="password"
+                        required
+                    />
+
+                    <label className={styles.label} htmlFor="confirm-password">Confirm password</label>
+                    <input
+                        id="confirm-password"
+                        type="password"
+                        className={styles.input}
                         value={confirm}
-                        placeholder='Confirm New Password'
+                        placeholder='Re-enter new password'
                         onChange={(event) => setConfirm(event.target.value)}
-                        required />
-                    <br /> <br />
-                    <button className={styles.btn} type='submit' disabled={loading}>
+                        required
+                    />
+
+                    <button className={styles.button} type='submit' disabled={loading}>
                         {loading ? "Resetting..." : "Reset Password"}
                     </button>
                 </form>
 
-                <p className={styles.navi}>
+                <div className={styles.footerRow}>
                     <Link className={styles.link} to="/login">Back to Login</Link>
-                </p>
+                </div>
             </div>
         </div>
     )
